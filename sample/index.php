@@ -5,10 +5,13 @@
  * Date: 2015/01/18
  * Time: 18:15
  */
+require __DIR__ . "/../vendor/autoload.php";
 
-$kbec = new \Kbec\Kbec();
+$session = \Kbec\AuthSessionProvider::native();
+$kbec = new \Kbec\Kbec($session);
 
 if(! $user = $kbec->auth()){
+    http_redirect()
     http_redirect("/login.php");
 }
 ?>

@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'Kbec\\' => array($baseDir . '/src'),
     'Facebook\\' => array($vendorDir . '/facebook/php-sdk-v4/src/Facebook'),
+    'Chatbox\\' => array($vendorDir . '/chatbox/phputil/src'),
 );

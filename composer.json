@@ -9,7 +9,8 @@
     "require": {
         "php": ">=5.4",
         "illuminate/database": "~4.2.12",
-        "facebook/php-sdk-v4": "4.0.*"
+        "facebook/php-sdk-v4": "4.0.*",
+        "chatbox/phputil": "dev-master"
     },
     "autoload":{
         "psr-4":{

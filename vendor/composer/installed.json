@@ -294,5 +294,96 @@
             "facebook",
             "sdk"
         ]
+    },
+    {
+        "name": "brandonwamboldt/utilphp",
+        "version": "1.0.7",
+        "version_normalized": "1.0.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/brandonwamboldt/utilphp.git",
+            "reference": "74d79a58e70d3e11026f92a7c2ac488de60f83cd"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/brandonwamboldt/utilphp/zipball/74d79a58e70d3e11026f92a7c2ac488de60f83cd",
+            "reference": "74d79a58e70d3e11026f92a7c2ac488de60f83cd",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "satooshi/php-coveralls": "dev-master"
+        },
+        "time": "2015-01-24 04:09:39",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "utilphp\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Brandon Wamboldt",
+                "email": "brandon.wamboldt@gmail.com"
+            }
+        ],
+        "description": "util.php is a collection of useful functions and snippets that you need or could use every day, designed to avoid conflicts with existing projects",
+        "homepage": "https://github.com/brandonwamboldt/utilphp",
+        "keywords": [
+            "collection",
+            "helpers",
+            "php",
+            "utility"
+        ]
+    },
+    {
+        "name": "chatbox/phputil",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/chatbox-inc/phputil.git",
+            "reference": "a0e06b2c559200abb5529b7a096f97d289b027b1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/chatbox-inc/phputil/zipball/a0e06b2c559200abb5529b7a096f97d289b027b1",
+            "reference": "a0e06b2c559200abb5529b7a096f97d289b027b1",
+            "shasum": ""
+        },
+        "require": {
+            "brandonwamboldt/utilphp": "1.0.*",
+            "php": ">=5.4"
+        },
+        "time": "2015-01-27 23:00:20",
+        "type": "project",
+        "extra": {
+            "installer-paths": {
+                "fuel/{$name}": [
+                    "fuel/core"
+                ],
+                "{$name}": [
+                    "fuel/docs"
+                ]
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Chatbox\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "kbec authenticate provider"
     }
 ]
