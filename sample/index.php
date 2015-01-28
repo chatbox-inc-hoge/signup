@@ -11,8 +11,7 @@ $session = \Kbec\AuthSessionProvider::native();
 $kbec = new \Kbec\Kbec($session);
 
 if(! $user = $kbec->auth()){
-    http_redirect()
-    http_redirect("/login.php");
+    \Chatbox\HTTP::redirect("/login.php");
 }
 ?>
 
