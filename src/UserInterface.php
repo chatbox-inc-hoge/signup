@@ -6,7 +6,7 @@
  * Time: 17:26
  */
 
-namespace Kbec;
+namespace Chatbox\Auth;
 
 /**
 getId : 識別子
@@ -28,11 +28,11 @@ interface UserInterface {
      * 一意のユーザ識別子からユーザオブジェクトを取得する。
      * @return UserInterface
      */
-    public function fetchById();
-    /**
-     * 認証情報から一意のユーザIDを取得する。
-     * @return mixed
-     */
-    public function checkCred();
+    public function fetchById($id);
+//    /**
+//     * 認証情報から一意のユーザIDを取得する。
+//     * @return mixed
+//     */
+//    public function checkCred();
 
 } 

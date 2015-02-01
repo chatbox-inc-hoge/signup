@@ -9,29 +9,31 @@ return [
             'host'      => '127.0.0.1',
             'database'  => 'database',
             'username'  => 'root',
-            'password'  => 'password',
+            'password'  => '',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
         ]
     ],
     "schema" => [
-        "sample_table" => function(Blueprint $table){
+        "tb_user" => function(Blueprint $table){
                 $table->unsignedInteger("id",true);
-                $table->string("key");
-                $table->text("data");
+                $table->string("data");
                 $table->dateTime("created_at");
                 $table->dateTime("updated_at");
             },
     ],
-    "seeds" => [
-        ["sample_table",function(Builder $builder){
-            $builder->insert($data);
-        }],
+    "alias" => [
+         "all" => ["default","auth"]
     ],
-//    "include" => [
-//        "user" => __DIR__."/data/user.php"
-//    ]
+//    "seeds" => [
+//        ["sample_table",function(Builder $builder){
+//            $builder->insert($data);
+//        }],
+//    ],
+    "includes" => [
+        "auth" => __DIR__."/schema/database.php"
+    ]
 ];
 
 

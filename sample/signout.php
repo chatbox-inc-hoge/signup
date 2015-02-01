@@ -7,9 +7,6 @@
  */
 require __DIR__ . "/../vendor/autoload.php";
 session_start();
-if($_SESSION["HTTP_METHODS"] === "POST"){
-
-    http_redirect("/mypage");
-}else{
-    echo \Chatbox\View::render(__DIR__."/views/login.php");
-}
+session_destroy();
+\Chatbox\HTTP::redirect("/");
+?>

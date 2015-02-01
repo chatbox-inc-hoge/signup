@@ -1,2 +1,2 @@
 server:
-	php -S localhost:8080 -t sample
+	php -S 0.0.0.0:8080 -d display_errors=On -t sample

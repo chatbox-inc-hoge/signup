@@ -4,10 +4,16 @@ use \Illuminate\Database\Query\Builder;
 
 return [
     "schema" => [
-        "kb_login_attempt" => function(Blueprint $table){
+        "signup_login_attempt" => function(Blueprint $table){
                 $table->unsignedInteger("id",true);
                 $table->string("login_key");
-                $table->text("data");
+                $table->dateTime("created_at");
+            },
+        "signup_auth" => function(Blueprint $table){
+                $table->unsignedInteger("id",true);
+                $table->string("provider");
+                $table->string("key");
+                $table->unsignedInteger("user_id");
                 $table->dateTime("created_at");
                 $table->dateTime("updated_at");
             },
