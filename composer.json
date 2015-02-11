@@ -1,7 +1,7 @@
 {
     "name": "chatbox/signup",
     "type": "project",
-    "description" : "kbec authenticate provider",
+    "description" : "authenticate provider",
     "keywords": [],
     "license": "MIT",
     "repositories": [
