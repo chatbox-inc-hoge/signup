@@ -12,9 +12,8 @@
         "facebook/php-sdk-v4": "@stable",
         "chatbox/phputil": "dev-master",
         "hybridauth/hybridauth": "@stable",
-        "opauth/opauth": "@stable",
-        "opauth/facebook": "@stable",
-        "chatbox/migrate": "dev-master"
+        "chatbox/migrate": "dev-master",
+        "chatbox/SimpleKVS": "dev-master"
     },
     "autoload":{
         "psr-4":{
