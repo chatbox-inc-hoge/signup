@@ -13,7 +13,7 @@
         "chatbox/phputil": "dev-master",
         "hybridauth/hybridauth": "@stable",
         "chatbox/migrate": "dev-master",
-        "chatbox/SimpleKVS": "dev-master"
+        "chatbox/simple-kvs": "dev-master"
     },
     "autoload":{
         "psr-4":{
