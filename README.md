@@ -1,5 +1,90 @@
 # 認証用ライブラリ
 
+## 構成
+
+基本ユーザオブジェクトのファクトリとして働く。
+
+- [invitation] ユーザデータの新規登録
+
+- [reminder] ユーザ認証情報のリセット
+
+- [serializer] ユーザ情報の永続化。セッションやトークンなど
+
+- [loader] 永続化されたユーザ情報のロード
+
+- セッションの抽象化はなし。
+
+### 作業めも
+
+セッション永続化まで完了
+
+続きトークン永続化へ
+
+pimpleへのセット&取り出し
+
+
+### セットアップ
+
+````
+$signUp = new SignUp;
+````
+
+### Auth
+
+````
+
+$passwordAuth = $signUp->authProvider("password");
+$user = $passwordAuth->getUser($cred);
+
+````
+
+### invitation
+
+````
+$inv = $signUp->newInvitation($mail,$data);
+
+$inv->publish();
+
+$inv = $signUp->loadInvitation($key);
+
+$email = $inv->getMailAdress();
+$hoge = $inv->get("hoge");//get $data["hoge"]
+
+$user = $signUp->accept($inv);
+
+$passwordAuth->bind($user,$cred);
+````
+
+### 永続化
+
+````
+$serializer = $signUp->serializeProvider("session");
+
+$key = $serializer->save($user); //セッションエントリキーやトークンなど
+
+$user = $serializer->load($key);
+
+$serializer->reset($user);
+
+````
+
+### Reminder
+
+````
+
+$reminder = new Reminder($user);
+
+$reminder->publish();
+
+$reminder = Reminder::load($key);
+
+$signUp->accept($reminder)
+
+````
+
+
+
+
 ## 利点
 
 ユーザオブジェクトなどアプリケーションロジックに関わる部分の独立性は維持しつつも、

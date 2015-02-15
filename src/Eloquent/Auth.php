@@ -11,6 +11,16 @@ namespace Chatbox\Auth\Eloquent;
 
 class Auth extends \Illuminate\Database\Eloquent\Model{
 
+    static public function entry($userId,$key,$provider){
+        return static::create([
+            "key" => $key,
+            "user_id" => $userId,
+            "provider" => $provider
+        ]);
+    }
+
     protected $table = "signup_auth";
-    protected $fillable = array('key', 'user_id',"provider");
+    protected $fillable = array('provider','key', 'user_id');
+
+
 } 

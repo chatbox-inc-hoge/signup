@@ -22,17 +22,23 @@ interface UserInterface {
      * 一意のユーザ識別子を返す。
      * @return mixed
      */
-    public function getId();
+    public function signUpGetId();
+    /**
+     * 一意のメールアドレスを返す。
+     * @return mixed
+     */
+    public function signUpGetMail();
 
     /**
      * 一意のユーザ識別子からユーザオブジェクトを取得する。
      * @return UserInterface
      */
-    public function fetchById($id);
-//    /**
-//     * 認証情報から一意のユーザIDを取得する。
-//     * @return mixed
-//     */
-//    public function checkCred();
+    public function signUpFetchById($id);
+
+    /**
+     * @param $data
+     * @return UserInterface
+     */
+    public function signUpSave($data);
 
 } 
