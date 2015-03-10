@@ -2,6 +2,8 @@
 use \Illuminate\Database\Schema\Blueprint;
 use \Illuminate\Database\Query\Builder;
 
+use Chatbox\SimpleKVS\Driver\SimpleDB;
+
 return [
     "schema" => [
         "signup_login_attempt" => function(Blueprint $table){
@@ -17,9 +19,9 @@ return [
                 $table->dateTime("created_at");
                 $table->dateTime("updated_at");
             },
-        "signup_tmp_token" => Chatbox\SimpleKVS\Util\SchemaBuilder::generate("signup_tmp_token"),
-        "signup_tmp_invitation" => Chatbox\SimpleKVS\Util\SchemaBuilder::generate("signup_tmp_mail"),
-        "signup_tmp_reminder" =>  Chatbox\SimpleKVS\Util\SchemaBuilder::generate("signup_tmp_reminder"),
+        "signup_tmp_token"      => SimpleDB::schema(),
+        "signup_tmp_invitation" => SimpleDB::schema(),
+        "signup_tmp_reminder"   => SimpleDB::schema(),
     ],
 //    "seeds" => [
 //        ["sample_table",function(Builder $builder){

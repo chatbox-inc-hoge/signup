@@ -10,7 +10,7 @@ namespace Chatbox\Auth\Driver;
 
 use Chatbox\Auth\UserInterface;
 /**
- *
+ * 認証に関するあれこれ。
  * @package Chatbox\Auth\Driver
  */
 interface AuthDriverInterface {

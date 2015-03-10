@@ -11,7 +11,8 @@
         "illuminate/database": "~4.2.12",
         "chatbox/phputil": "dev-master",
         "chatbox/migrate": "dev-master",
-        "chatbox/simple-kvs": "dev-master"
+        "chatbox/simple-kvs": "dev-master",
+        "chatbox/box":"dev-master"
     },
     "autoload":{
         "psr-4":{

@@ -40,6 +40,8 @@ $user = $passwordAuth->getUser($cred);
 
 ### invitation
 
+ユーザデータの作成
+
 ````
 $inv = $signUp->newInvitation($mail,$data);
 

@@ -16,6 +16,6 @@ class Invitation extends Util\Envelope{
      */
     public function accept(array $data=[]){
         $data = array_merge($this->data,$data);
-        return $this->user->signUpSave($data);
+        return $this->user->signUpCreateUser($data);
     }
 }

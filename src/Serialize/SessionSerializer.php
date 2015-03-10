@@ -17,6 +17,7 @@ class SessionSerializer implements SerializeInterface{
 
     public function save(UserInterface $user)
     {
+        isset($_SESSION) or session_start();
         $_SESSION[$this->key] = serialize($user);
     }
 
@@ -26,6 +27,7 @@ class SessionSerializer implements SerializeInterface{
      */
     public function load($key=null)
     {
+        isset($_SESSION) or session_start();
         if($data = $_SESSION[$this->key]){
             $user = unserialize($data);
             if($user instanceof UserInterface){
@@ -37,6 +39,7 @@ class SessionSerializer implements SerializeInterface{
 
     public function reset(UserInterface $user)
     {
+        isset($_SESSION) or session_start();
         throw new Exception("not implemented yet");
     }
 
@@ -46,6 +49,7 @@ class SessionSerializer implements SerializeInterface{
      */
     public function delete($key=null)
     {
+        isset($_SESSION) or session_start();
         throw new Exception("not implemented yet");
     }
 
