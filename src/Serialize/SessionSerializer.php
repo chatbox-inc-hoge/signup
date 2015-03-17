@@ -9,6 +9,7 @@
 namespace Chatbox\Auth\Serialize;
 
 use \Chatbox\Auth\UserInterface;
+use Arr;
 
 class SessionSerializer implements SerializeInterface{
 
@@ -25,16 +26,16 @@ class SessionSerializer implements SerializeInterface{
      * @param null $key
      * @return \Chatbox\Auth\UserInterface
      */
-    public function load($key=null)
+    public function load($key=null,$default=null)
     {
         isset($_SESSION) or session_start();
-        if($data = $_SESSION[$this->key]){
+        if($data = Arr::get($_SESSION,$this->key)){
             $user = unserialize($data);
             if($user instanceof UserInterface){
                 return $user;
             }
         }
-        throw new Exception("hogehogehoge");
+        return $default;
     }
 
     public function reset(UserInterface $user)

@@ -20,9 +20,9 @@ interface SerializeInterface {
 
     /**
      * @param null $key
-     * @return UserInterface
+     * @return UserInterface|null
      */
-    public function load($key=null);
+    public function load($key=null,$default=null);
 
     /**
      * @param UserInterface $user

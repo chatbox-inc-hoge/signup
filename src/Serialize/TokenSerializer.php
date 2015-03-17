@@ -38,7 +38,7 @@ class TokenSerializer implements SerializeInterface{
      * @param null $key
      * @return \Chatbox\Auth\UserInterface
      */
-    public function load($key=null)
+    public function load($key=null,$default=null)
     {
         if($key && ($data = $this->kvs->get($key))){
             $user = unserialize($data->getValue());
@@ -46,7 +46,7 @@ class TokenSerializer implements SerializeInterface{
                 return $user;
             }
         }
-        throw new Exception("hogehogehoge");
+        return $default;
     }
 
     public function reset(UserInterface $user)
