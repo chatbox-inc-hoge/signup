@@ -17,8 +17,8 @@ interface AuthDriverInterface {
 
     public function __construct(UserInterface $user);
 
-    public function getUser($cred);
+    public function getUser($token);
 
-    public function bind(UserInterface $user,$cred);
+    public function bind(UserInterface $user,$token);
 
 } 

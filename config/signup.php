@@ -12,5 +12,15 @@ return [
      * [require] UserObject Instance
      */
     "user" => null,// User Object,
-    "kvs" => new SimpleDB(["table" => "signup_tmp_invitation"])
+    "auth" => [
+        "password" => "\\Chatbox\\Auth\\Driver\\Password",
+        "token"    => "\\Chatbox\\Auth\\Driver\\Token",
+    ],
+    "invitation" => [
+        "kvs" => new SimpleDB(["table" => "signup_tmp_invitation"]),
+    ],
+//    "serializer" => [
+//        "session" => new \Chatbox\Auth\Serialize\SessionSerializer(),
+//        "token" => new \Chatbox\Auth\Serialize\TokenSerializer(),
+//    ]
 ];

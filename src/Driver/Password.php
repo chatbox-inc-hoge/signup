@@ -8,60 +8,17 @@
 
 namespace Chatbox\Auth\Driver;
 
-use Chatbox\Auth\Eloquent\Auth;
+use Chatbox\Auth\Eloquent\ModelAuth;
 use \Chatbox\Auth\UserInterface;
 
-class Password implements AuthDriverInterface{
+class Password extends Token{
 
-    /**
-     * @var UserInterface
-     */
-    protected $user;
+    protected $providerName = "password";
 
-    public function __construct(UserInterface $user)
-    {
-        $this->user = $user;
+    public function getToken($userId,$password){
+        return sha1(json_encode([
+            "userId" => "$userId",
+            "password" => "$password"
+        ]));
     }
-
-    public function getUser($cred)
-    {
-        list($email,$password) = $this->parseCred($cred);
-        $userAuth = Auth::where([
-            "key" => $this->hashPassword($email,$password),
-            "provider" => "password"
-        ])->firstOrFail();
-        if(!$userId = $userAuth->user_id){
-            throw new \Exception("hoehoe");
-        }
-        if(!$user = $this->user->signUpFetchById($userId)){
-            throw new \Exception("hoehoe2");
-        }
-        return $user;
-    }
-
-    public function bind(\Chatbox\Auth\UserInterface $user, $cred)
-    {
-        list($email,$password) = $this->parseCred($cred);
-
-        return Auth::entry(
-            $user->signUpGetId(),
-            $this->hashPassword($email,$password),
-            "password"
-        );
-    }
-
-    public function parseCred($cred){
-        if(!isset($cred["email"])||!isset($cred["password"])){
-            throw new \Exception("password auth provider require 'email' and 'password' entry for credential argument");
-        }
-        $email = $cred["email"];
-        $password = $cred["password"];
-        return [$email,$password];
-    }
-
-    public function hashPassword($email,$password){
-        return sha1(json_encode([$email,$password]));
-    }
-
-
 } 

@@ -14,8 +14,9 @@ use Chatbox\SimpleKVS\Driver\KVSDriverInterface;
 
 class InvitationProvider {
 
-    public function __invoke(Config $config,SimpleKVS $kvs,UserInterface $user)
+    public function __invoke(Config $config,UserInterface $user)
     {
+        $kvs =  new SimpleKVS($config->get("invitation.kvs"));
         $obj = new Invitation($kvs,$user);
         return $obj;
     }

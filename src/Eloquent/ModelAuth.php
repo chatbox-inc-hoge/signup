@@ -9,14 +9,21 @@
 namespace Chatbox\Auth\Eloquent;
 
 
-class Auth extends \Illuminate\Database\Eloquent\Model{
+class ModelAuth extends \Illuminate\Database\Eloquent\Model{
 
-    static public function entry($userId,$key,$provider){
+    static public function insert($userId,$key,$provider){
         return static::create([
             "key" => $key,
             "user_id" => $userId,
             "provider" => $provider
         ]);
+    }
+
+    static public function findByToken($token,$providerName){
+        return static::where([
+            "key" => $token,
+            "provider" => $providerName
+        ])->first();
     }
 
     protected $table = "signup_auth";

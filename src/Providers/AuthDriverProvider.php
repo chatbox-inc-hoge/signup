@@ -9,14 +9,20 @@ namespace Chatbox\Auth\Providers;
 use Chatbox\Config\Config;
 use Chatbox\Auth\Driver\Password;
 use Chatbox\Auth\UserInterface;
+use Chatbox\Auth\Driver\AuthDriverInterface;
 
 class AuthDriverProvider{
 
     public function __invoke(Config $config,UserInterface $user)
     {
         $arr = [];
-        $arr["password"] = new Password($user);
-
+        foreach($config->get("auth") as $key=>$authDriverClassName){
+            if(is_subclass_of($authDriverClassName,"\\Chatbox\\Auth\\Driver\\AuthDriverInterface")){
+                $arr[$key] = new $authDriverClassName($user);
+            }else{
+                throw new \Exception("invalid argument");
+            }
+        }
         return $arr;
     }
 

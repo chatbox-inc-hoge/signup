@@ -49,14 +49,11 @@ class SignUp extends Box{
     public function configure()
     {
         parent::configure();
+        $this->register("config",[],$this->config);
         $this->register("user",["config"],new UserObjectProvider());
-        $this->register("kvs",["config"],new KVSProvider());
-        $this->register("invitation",["config","kvs","user"],new InvitationProvider());
+        $this->register("invitation",["config","user"],new InvitationProvider());
         $this->register("auth",["config","user"],new AuthDriverProvider());
-        $this->register("serializer",["config"],new SerializerProvider());
-        $this->register("config",[],function(){
-            return $this->config;
-        });
+//        $this->register("serializer",["config"],new SerializerProvider());
     }
 
     /**
@@ -79,46 +76,50 @@ class SignUp extends Box{
             throw new \DomainException("non exist service to be fetch");
         }
     }
-    /**
-     * @param $type
-     * @return Serialize\SerializeInterface
-     */
-    public function remember($type){
-        $arr = $this->getService("serializer");
-        if($auth = Arr::get($arr,$type)){
-            return $auth;
-        }else{
-            throw new \DomainException("non exist service to be fetch");
-        }
-    }
 
-    /**
-     * @return Invitation
-     */
-    public function invitation(){
-        return $this->getService("invitation");
-    }
-
-
-    /**
-     * @param $email
-     * @param array $data
-     * @return Invitation
-     * @deprecated
-     */
-    public function newInvitation(array $data){
-        return $this->pimple["invitation.create"]($data);
+    public function createUser(){
 
     }
+////    /**
+////     * @param $type
+////     * @return Serialize\SerializeInterface
+////     */
+////    public function remember($type){
+////        $arr = $this->getService("serializer");
+////        if($auth = Arr::get($arr,$type)){
+////            return $auth;
+////        }else{
+////            throw new \DomainException("non exist service to be fetch");
+////        }
+////    }
+//
+//    /**
+//     * @return Invitation
+//     */
+//    public function invitation(){
+//        return $this->getService("invitation");
+//    }
+//
+//
+//    /**
+//     * @param $email
+//     * @param array $data
+//     * @return Invitation
+//     * @deprecated
+//     */
+//    public function newInvitation(array $data){
+//        return $this->pimple["invitation.create"]($data);
+//
+//    }
 
-    /**
-     * @param $code
-     * @return Invitation
-     * @deprecated
-     */
-    public function loadInvitation($code){
-        return $this->pimple["invitation.load"]($code);
-    }
-
-
+//    /**
+//     * @param $code
+//     * @return Invitation
+//     * @deprecated
+//     */
+//    public function loadInvitation($code){
+//        return $this->pimple["invitation.load"]($code);
+//    }
+//
+//
 } 
