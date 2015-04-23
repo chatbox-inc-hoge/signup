@@ -8,7 +8,6 @@
     ],
     "require": {
         "php": ">=5.4",
-        "illuminate/database": "~4.2.12",
         "chatbox/phputil": "dev-master",
         "chatbox/migrate": "dev-master",
         "chatbox/simple-kvs": "dev-master",
